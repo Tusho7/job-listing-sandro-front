@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Type } from "./Jobs";
 
 function Job({ data }: { data: Type }) {
@@ -8,12 +8,25 @@ function Job({ data }: { data: Type }) {
     ...data.languages,
     ...data.tools,
   ];
+
+  const [icon, setIcon] = useState("");
+
+  const importIcons = () => {
+    import(`${data.logo}`).then((item) => {
+      setIcon(item.default);
+    });
+  };
+
+  useEffect(() => {
+    importIcons();
+  }, [data.logo]);
+
   return (
     <div>
       {data && (
         <div className="job-container">
           <div className="logo">
-            <img src={data.logo} alt="" />
+            <img src={icon} alt="" />
           </div>
           <div className="company-name">
             <p>{data.company}</p>
