@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Type } from "./Jobs";
+import { DataTypes, functionType } from "./Jobs";
 
-function Job({ data }: { data: Type }) {
+interface jobTypes {
+  data: DataTypes;
+  fillter: (a: string) => void;
+}
+
+function Job({ data, fillter }: jobTypes) {
   let items: string[] = [
     data.role,
     data.level,
@@ -22,7 +27,7 @@ function Job({ data }: { data: Type }) {
   }, [data.logo]);
 
   return (
-    <div>
+    <div className="job-container">
       {data && (
         <div className="job-container">
           <div className="logo">
@@ -46,7 +51,7 @@ function Job({ data }: { data: Type }) {
 
           <div>
             {items.map((i) => {
-              return <button>{i}</button>;
+              return <button onClick={() => fillter(i)}>{i}</button>;
             })}
           </div>
         </div>
