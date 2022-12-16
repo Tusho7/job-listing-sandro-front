@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { DataTypes, functionType } from "./Jobs";
+import { useEffect, useState } from "react";
+import { DataTypes } from "./Jobs";
 
 interface jobTypes {
   data: DataTypes;
@@ -29,32 +29,35 @@ function Job({ data, fillter }: jobTypes) {
   return (
     <div className="job-container">
       {data && (
-        <div className="job-container">
+        <>
           <div className="logo">
             <img src={icon} alt="" />
           </div>
-          <div className="company-name">
-            <p>{data.company}</p>
+          <div className="first-div">
+            <div className="company-div">
+              <span className="company-name">{data.company}</span>
 
-            <div>
               {data.new && <span className="new">NEW!</span>}
               {data.featured && <span className="featured">FEATURED</span>}
             </div>
-          </div>
-          <div className="position">{data.position}</div>
-          <div className="days-time">
-            <span>{data.postedAt}</span>
-            <span>{data.contract}</span>
-            <span>{data.location}</span>
-          </div>
-          <hr></hr>
 
-          <div>
+            <div className="position">{data.position}</div>
+
+            <div className="details">
+              <span>{data.postedAt}</span>
+              <span>&nbsp;•&nbsp;</span>
+              <span>{data.contract}</span>
+              <span>&nbsp;•&nbsp;</span>
+              <span>{data.location}</span>
+            </div>
+          </div>
+
+          <div className="second-div">
             {items.map((i) => {
-              return <button onClick={() => fillter(i)}>{i}</button>;
+              return <span onClick={() => fillter(i)}>{i}</span>;
             })}
           </div>
-        </div>
+        </>
       )}
     </div>
   );

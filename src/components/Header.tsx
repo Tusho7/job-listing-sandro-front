@@ -1,4 +1,3 @@
-import { DataTypes } from "./Jobs";
 import x from "./images/icon-remove.svg";
 
 interface jobTypes {
@@ -9,19 +8,19 @@ interface jobTypes {
 
 function Header({ fltr, removeJobs, clearJobs }: jobTypes) {
   return (
-    <div className="header-container">
+    <div className="header-main-container">
       <ul>
         {fltr.map((i: any) => {
           return (
             <li>
               {i}
-              <button onClick={() => removeJobs(i)}>
+              <button className="close-button" onClick={() => removeJobs(i)}>
                 <img src={x} alt="" />
               </button>
             </li>
           );
         })}
-        <a href="#" onClick={() => clearJobs("")}>
+        <a className="clear" href="#" onClick={() => clearJobs("")}>
           Clear
         </a>
       </ul>

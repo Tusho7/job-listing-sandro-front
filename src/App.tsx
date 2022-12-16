@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { DataTypes } from "../src/components/Jobs";
-import "./App.css";
 import Header from "./components/Header";
 import Jobs from "./components/Jobs";
 
