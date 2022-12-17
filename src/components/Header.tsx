@@ -1,9 +1,31 @@
-import React from 'react'
+import x from "./images/icon-remove.svg";
 
-function Header() {
-  return (
-    <div>Header</div>
-  )
+interface jobTypes {
+  fltr: any;
+  removeJobs: (a: string) => void;
+  clearJobs: (a: string) => void;
 }
 
-export default Header
+function Header({ fltr, removeJobs, clearJobs }: jobTypes) {
+  return (
+    <div className="header-main-container">
+      <ul>
+        {fltr.map((i: any) => {
+          return (
+            <li>
+              {i}
+              <button className="close-button" onClick={() => removeJobs(i)}>
+                <img src={x} alt="" />
+              </button>
+            </li>
+          );
+        })}
+        <a className="clear" href="#" onClick={() => clearJobs("")}>
+          Clear
+        </a>
+      </ul>
+    </div>
+  );
+}
+
+export default Header;
