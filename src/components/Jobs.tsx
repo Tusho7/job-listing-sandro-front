@@ -27,7 +27,9 @@ function Jobs({ fillter, filterJobs }: functionType) {
   const [data, setData] = useState<DataTypes[]>([]);
   useEffect(() => {
     const getData = async () => {
-      const res = await axios.get("http://localhost:3000/api/listings");
+      const res = await axios.get(
+        "https://job-listing-tsvv.onrender.com/api/listings"
+      );
       setData(res.data);
     };
     getData();
